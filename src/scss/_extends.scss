@@ -1,0 +1,26 @@
+.centerflex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .filter-bg-dark{
+    width: 100%;
+    background-color: rgba(0,0,0, 0.4);
+    padding: 2rem;
+  }
+  .y-transition{
+    animation: 1.2s ease transitionY;
+  }
+  .opacity-0-100{
+    animation: 2.5s ease opacity0to1;
+  }
+  .x-transition{
+    animation: 1.90s ease-in-out transitionX;
+  }
+  .x-transitionNegative{
+    animation: 1.90s ease-in-out transitionXNegative;
+  }
+  .colorMain{
+    background: rgb(102, 4, 4);
+    background: linear-gradient(90deg, rgb(102, 4, 4) 8%, rgb(0, 0, 0) 85%, rgb(93, 2, 2) 100%);
+  }
