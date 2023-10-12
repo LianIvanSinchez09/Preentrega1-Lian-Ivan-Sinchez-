@@ -1,21 +1,13 @@
 import React from 'react';
+import Item from './item';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ItemListContainer = () => {
-  return (
+  return(
     <div>
-      <Item nombre="Docena de facturas" precio="500.00" />
+      <Item nombre="Docena de facturas" precio="500.00"/>
     </div>
-  );
-};
-
-const Item = (props) => {
-  return (
-    <div className='my-4'>
-      <h2>Nombre: {props.nombre}</h2>
-      <h2>Precio: {props.precio}</h2>
-    </div>
-  );
-};
+  )
+}
 
 export default ItemListContainer;
