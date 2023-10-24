@@ -49,7 +49,7 @@
 }
 
 .margin-top{
-  margin-top: 5rem;
+  margin-top: 10rem;
 }
 
 * {
@@ -57,6 +57,18 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+}
+
+.custom-links{
+  font-family: "Bebas Neue", sans-serif;
+  text-decoration: none;
+  outline: none;
+  color: white;
+  font-size: 40px;
+}
+
+.navbrand{
+  font-size: 55px;
 }
 
 h1, button, h2, h3, h4, h5, h6, a, text-link:hover , a:hover, a:focus, a:active {
@@ -70,26 +82,24 @@ a, a:active, a:focus {
   text-decoration: none;
   transition-timing-function: ease-in-out;
   text-decoration: none;
-  color: lightgrey;
+  /* color: lightgrey; */
   font-family: "Bebas Neue", sans-serif;
 }
 main {
   background-color: white;
   display: flex;
   flex-direction: column;
-  flex: 1;
 }
 
 html, body {
-  height: 100%;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
 }
 
-body {
+/* body {
   position: relative;
-}
+} */
 
 ul {
   list-style: none;
@@ -104,6 +114,10 @@ header {
   width: 100%;
   position: fixed;
   z-index: 999;
+}
+
+.hamburger-button{
+  color: white;
 }
 
 nav {
@@ -230,8 +244,7 @@ nav {
 }
 
 .btn-2:hover {
-  color: #f26250;
-  background-color: #fff;
+  background-color: lightgray;
 }
 
 .modal_close:hover {
@@ -508,11 +521,16 @@ nav {
 }
 
 footer {
-  min-height: 40%;
-  margin-top: auto;
+  --mask:
+    radial-gradient(178.89px at 50% 240.00px,#000 99%,#0000 101%) calc(50% - 160px) 0/320px 100%,
+    radial-gradient(178.89px at 50% -160px,#0000 99%,#000 101%) 50% 80px/320px 100% repeat-x;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  display: flex;
   background: rgb(0, 0, 0);
   background: linear-gradient(52deg, rgb(0, 0, 0) 0%, rgb(67, 6, 6) 63%, rgb(161, 15, 15) 100%, rgb(0, 0, 0) 100%);
 }
+
 footer a {
   font-size: 35px;
 }
@@ -608,9 +626,6 @@ footer p {
   }
 }
 @media screen and (max-width: 790px) {
-  footer {
-    min-height: 80%;
-  }
   .contacts-flex {
     display: flex;
     flex-direction: column;

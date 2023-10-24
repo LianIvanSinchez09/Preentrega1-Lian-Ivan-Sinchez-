@@ -1,28 +1,36 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CartWidget from './CartWidget';
+import Styles from '../css/styles.css';
+import '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faListUl } from '@fortawesome/free-solid-svg-icons';
+import { Navbar, Nav, Accordion, Card, NavbarToggle, NavbarCollapse, NavbarBrand} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import '../pages/Productos';
+import Productos from '../pages/Productos';
+import Empleados from '../pages/Empleados';
+import Home from '../pages/Home';
 
-export const Navbar = () => {
+export const NavigationBar = () => {
   return (
     <header>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="navbar-main">
-                {/* brand */}
-                <a className="display-4 text-link" href="#">Los Cuatro Alamos</a>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <i className="fa-solid fa-bars fa-2x1 fa" style={{color: '#ffffff'}}></i>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <ul className="navbar-nav navbar-links">
-                        <li><a className="text-link nav-item link-nav display-6" href="pages/.html">Productos</a></li>
-                        <li><a className="text-link nav-item link-nav display-6" href="pages/empleados.html">Empleados</a></li>
-                        <li><a className="text-link nav-item link-nav display-6" href="pages/newsletter.html">Newsletter</a></li>
-                        <li><a className="text-link nav-item link-nav display-6" href="pages/contacto.html">Contactos</a></li>
-                    <CartWidget/>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <Navbar bg="light" expand="lg">
+            <Link className='custom-links navbrand' to='/Home'>Los Cuatro Alamos</Link>
+            <NavbarToggle aria-controls="basic-navbar-nav" />
+            <NavbarCollapse id="basic-navbar-nav">
+                <ul className='navbar-nav navbar-links'>
+                    <Nav className="mr-auto">
+                        <Link to='/productos' className='mx-2 custom-links nav-item link-nav display-6'>Productos</Link>
+                        <Link to='/empleados' className='mx-2 custom-links nav-item link-nav display-6'>Empleados</Link>
+                        <Link to='/cart'>
+                            <CartWidget/>
+                        </Link>
+                        
+                    </Nav>
+                </ul>
+            </NavbarCollapse>
+        </Navbar>
  </header>
   )
 }

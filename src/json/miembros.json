@@ -1,0 +1,50 @@
+[
+    {
+        "nombre": "Gael",
+        "apellido": "Huertas",
+        "cargo": "Lider de Marketing",
+        "perfilPic": "../imgs/founder1.jpg",
+        "alt": "founder-1",
+        "desc": "Gael Huertas es el estratega detrás del éxito de Los Cuatro Alamos. Como Líder de Marketing, su creatividad y visión han llevado la panadería a nuevas alturas."
+    },
+    {
+        "nombre": "Julián",
+        "apellido": "Martos",
+        "cargo": "Communinty Manager",
+        "perfilPic": "../imgs/founder2.jpg",
+        "alt": "founder-2",
+        "desc": "Julián es un experto en crear contenido atractivo y fomentar relaciones sólidas con nuestros clientes. Su pasión por la panadería brilla a través de cada publicación y respuesta."
+    },
+    {
+        "nombre": "Dario",
+        "apellido": "Caro",
+        "cargo": "Lider Chef",
+        "perfilPic": "../imgs/founder3.jpg",
+        "alt": "founder-3",
+        "desc": "Darío Caro es el maestro detrás de los sabores de Los Cuatro Alamos. Como Líder Chef, su experiencia culinaria y creatividad son la base de nuestros productos excepcionales."
+    },
+    {
+        "nombre": "Lorena",
+        "apellido": "Martinez",
+        "cargo": "Panadera Oficial",
+        "perfilPic": "../imgs/employee1.jpg",
+        "alt": "employee1",
+        "desc": ""
+    },
+    {
+        "nombre": "Valería",
+        "apellido": "Rodriguez",
+        "cargo": "Panadera Oficial",
+        "perfilPic": "../imgs/employee2.jpg",
+        "alt": "employee2",
+        "desc": ""
+    },
+    {
+        "nombre": "Luis",
+        "apellido": "Caro",
+        "cargo": "Panadero Oficial",
+        "perfilPic": "../imgs/employee3.jpg",
+        "alt": "employee3",
+        "desc": ""
+    }
+]

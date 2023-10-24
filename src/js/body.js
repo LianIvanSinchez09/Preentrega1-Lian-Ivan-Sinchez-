@@ -29,7 +29,7 @@ const footerLinksHTML = footerLinks.map(link => `
     `);
 
 // se convierte el array en un string con la funcion .join()
-listaFooter.innerHTML = footerLinksHTML.join('');
+// listaFooter.innerHTML = footerLinksHTML.join('');
 
 
 // bloque de codigo enfocado en la pagina de empleados.html
@@ -74,18 +74,14 @@ openModals.forEach((openModalButton, index) => {
 });
 
 // agregar un evento click al modal para cerrarlo si se hace clic en el botón de cerrar
-modal.addEventListener("click", (e) => {
+if(modal){
+    modal.addEventListener("click", (e) => {
     if (e.target.classList.contains("modal_close")) {
         e.preventDefault();
         modal.classList.remove('modal_show');
     }
 });
-
-// agregar un evento keydown para cerrar el modal cuando se presiona la tecla "esc"
-window.addEventListener("keydown", (e) => {
-    e.key === "Escape" ? modal.classList.remove('modal_show') : "" ;
-});
-
+}
 /*
 -Boton para añadir X existencias de un mismo producto, para evitar spamear el boton de comprar
 -Cambiar el nombre de la pagina empleados y se llame "Conocenos", con fotos de la fabrica y contactos

@@ -1,13 +1,24 @@
 import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import { Card, CardText } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-
-const Item = (props) => {
-  return (
-    <div className='mt-3'>
-        <h2>Nombre: {props.nombre}</h2>
-        <h3>Precio: {props.precio}</h3>
-    </div>
-  );
+const Item = ({name, img, id, precio}) => {
+    // console.log(id)
+    return (
+        <Card style={{ width: '18rem' }}>
+        <CardImg variant="top" src={img} />
+        <CardBody>
+            <CardTitle>{name}</CardTitle>
+            <CardText>
+                {description}
+            </CardText>
+            <CardText>
+                {precio}
+            </CardText>
+        </CardBody>
+        </Card>
+    );
 }
 
 export default Item
