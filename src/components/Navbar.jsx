@@ -7,8 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faListUl } from '@fortawesome/free-solid-svg-icons';
 import { Navbar, Nav, Accordion, Card, NavbarToggle, NavbarCollapse, NavbarBrand} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import '../pages/Productos';
-import Productos from '../pages/Productos';
 import Empleados from '../pages/Empleados';
 import Home from '../pages/Home';
 
@@ -21,7 +19,7 @@ export const NavigationBar = () => {
             <NavbarCollapse id="basic-navbar-nav">
                 <ul className='navbar-nav navbar-links'>
                     <Nav className="mr-auto">
-                        <Link to='/productos' className='mx-2 custom-links nav-item link-nav display-6'>Productos</Link>
+                        <Link to='/' className='mx-2 custom-links nav-item link-nav display-6'>Productos</Link>
                         <Link to='/empleados' className='mx-2 custom-links nav-item link-nav display-6'>Empleados</Link>
                         <Link to='/cart'>
                             <CartWidget/>

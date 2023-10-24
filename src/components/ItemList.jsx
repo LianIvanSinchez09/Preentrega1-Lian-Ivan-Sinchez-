@@ -22,6 +22,4 @@ const ItemList = ({productos}) => {
     </div>
   )
 }
-// {id: 1, name: "Mix Regional", description: "Sabores de la patagonia", alt: "mix-regional", precio: 350, img: "../imgs/products-pngs/product-1.png"},
-// {id: 2, name: "Cheesecake Festivo", description: "Ideal para reuniones empresariales", alt: "cheesecake-festivo", precio:550, img: "../imgs/products-pngs/product-2.png"}
 export default ItemList

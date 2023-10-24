@@ -29,12 +29,11 @@ const ItemDetailContainer = () => {
         }
     ]
 
-    // Encuentra el producto correspondiente según el ID
     const producto = productos.find((p) => p.id == id);
 
     return (
         <div>
-            <ItemDetail producto={producto} /> {/* Pasa el producto al componente ItemDetail */}
+            <ItemDetail producto={producto} />
         </div>
     );
 };
