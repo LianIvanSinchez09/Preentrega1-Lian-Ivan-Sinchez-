@@ -23,31 +23,40 @@ const ItemDetail = ({ producto }) => {
     };
 
     return (
-        <div className='margin-top'>
+        <main className='margin-top centerflex'>
             <Card className='usercard'>
                 <CardBody>
                     <CardTitle>{producto.name}</CardTitle>
                     <CardText>{producto.description}</CardText>
+                    <CardText>$ {producto.precio}</CardText>
                     <div>
                         <Row>
-                            <Col>
-                                <Button className='btn-2' onClick={restar}>
-                                    -
-                                </Button>
-                            </Col>
-                            <Col>
-                                <span>Cantidad: {cantidad}</span>
-                            </Col>
-                            <Col>
-                                <Button className='btn-2' onClick={sumar}>
-                                    +
-                                </Button>
-                            </Col>
+                            <div className='centerflex'>
+                                <Col>
+                                    <Button className='btn-2' onClick={restar}>
+                                        -
+                                    </Button>
+                                </Col>
+                                <Col>
+                                    <span>Cantidad: {cantidad}</span>
+                                </Col>
+                                <Col>
+                                    <Button className='btn-2' onClick={sumar}>
+                                        +
+                                    </Button>
+                                </Col>
+                                <div>
+                                    <Button className='btn-2'>
+                                        Comprar
+                                    </Button>
+                                </div>
+
+                            </div>
                         </Row>
                     </div>
                 </CardBody>
             </Card>
-        </div>
+        </main>
     );
 }
 

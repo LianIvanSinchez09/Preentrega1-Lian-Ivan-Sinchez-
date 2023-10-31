@@ -1,5 +1,5 @@
 import React from 'react'
-import Styles from '../css/styles.css'
+import '../css/styles.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Home = () => {

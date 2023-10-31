@@ -9,6 +9,7 @@ import { Navbar, Nav, Accordion, Card, NavbarToggle, NavbarCollapse, NavbarBrand
 import { Link } from 'react-router-dom';
 import Empleados from '../pages/Empleados';
 import Home from '../pages/Home';
+import ItemListContainer from './ItemListContainer';
 
 export const NavigationBar = () => {
   return (
@@ -21,7 +22,7 @@ export const NavigationBar = () => {
                     <Nav className="mr-auto">
                         <Link to='/' className='mx-2 custom-links nav-item link-nav display-6'>Productos</Link>
                         <Link to='/empleados' className='mx-2 custom-links nav-item link-nav display-6'>Empleados</Link>
-                        <Link to='/cart'>
+                        <Link>
                             <CartWidget/>
                         </Link>
                         

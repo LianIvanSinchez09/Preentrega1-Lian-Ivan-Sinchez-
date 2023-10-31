@@ -6,17 +6,17 @@ import { Link } from 'react-router-dom';
 const Item = ({name, img, id, precio}) => {
     // console.log(id)
     return (
-        <Card style={{ width: '18rem' }}>
-        <CardImg variant="top" src={img} />
-        <CardBody>
-            <CardTitle>{name}</CardTitle>
-            <CardText>
-                {description}
-            </CardText>
-            <CardText>
-                {precio}
-            </CardText>
-        </CardBody>
+        <Card>
+            <CardImg variant="top" src={img} />
+            <CardBody>
+                <CardTitle>{name}</CardTitle>
+                <CardText>
+                    {description}
+                </CardText>
+                <CardText>
+                    {precio}
+                </CardText>
+            </CardBody>
         </Card>
     );
 }

@@ -10,13 +10,11 @@ const CartWidget = () => {
   return (
     <Dropdown>
       <DropdownToggle variant="dark" bg="dark" id="dropdown-basic">
-        {/* <i className="link-nav display-6 fas fa-shopping-cart" icon="shopping-cart" style={{color: '#ffffff'}} type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i> */}
         <FontAwesomeIcon className='h2' icon={faShoppingCart}/>
       </DropdownToggle>
       <DropdownMenu aria-labelledby="dropdownMenuButton1">
           <div className="d-flex flex-column gap-3 p-3">
             <div id="carrito" className="mt-2 mb-2">
-              <ItemListContainer/>
               {/* Aquí se mostrarán los productos en el carrito */}
             </div>
           </div>

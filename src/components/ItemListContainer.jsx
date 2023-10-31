@@ -1,108 +1,87 @@
-import React from 'react'
-import ItemDetail from './ItemDetail'
+import React, { useState, useEffect } from 'react';
+import ItemDetail from './ItemDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../css/styles.css'
-import { Card, CardImg, CardBody, CardTitle, CardText, Button } from 'react-bootstrap';
+import '../css/styles.css';
+import { Card, CardBody, CardTitle, CardText, Button, Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const ItemListContainer = () => {
-    const productos = [
-        {
-        "id": 1, 
-        "name": "Mix Regional", 
-        "description": "Pastafrola, medialunas y más (1 docena)", 
-        "precio": 350, 
-        "img": "imgs/products-pngs/product-1.png"
-        },
-        {
-        "id": 2, 
-        "name":"Cheesecake Festivo", 
-        "description": "Cheesecake de frutilla y chocolate (1)", 
-        "precio": 550, 
-        "img": "imgs/products-pngs/product-2.png"
-        },
-        {
-        "id": 3, 
-        "name": "Cheesecake Tradicional", 
-        "description": "Cheesecake con frutilla y pasta de maní (1)", 
-        "precio": 150, 
-        "img": "imgs/products-pngs/product-3.png"
-        }
-    ]
-    const mostrarProductos = new Promise((resolve, reject) => {
-        if(productos.length > 0){
-            setTimeout(() => {
-               resolve(productos) 
-            }, 3000);
-        }else{
-            reject('No se encontraron productos')
-        }
-    })   
-    mostrarProductos
-        .then((resultado) => {
-            console.log(resultado)
-        })
-        .catch((error) => {
-            console.log(error)
-        })
+  const [productosOriginales, setProductosOriginales] = useState([]);
+  const [filtrarProductos, setFiltrarProductos] = useState([]);
+  const [filtrarPorMayor, setFiltrarPorMayor] = useState([]);
+
+  useEffect(() => {
+    // realiza la carga de datos desde el archivo JSON usando fetch
+    fetch('/src/json/productos.json')
+      .then((res) => res.json())
+      .then((json) => {
+        // guarda los datos originales y los filtra por defecto al cargar
+        setProductosOriginales(json);
+        setFiltrarProductos(json);
+      })
+      .catch((error) => {
+        console.error('Error al cargar datos:', error);
+      });
+  }, []);
+
+  const filtrarPorPrecio = () => {
+    // Ordena los productos por precio en orden ascendente
+    const productosOrdenados = [...filtrarProductos].sort((a, b) => a.precio - b.precio);
+    setFiltrarProductos(productosOrdenados);
+  };
+
+  const filtrarPrecioMayor = () => {
+    // Ordena los productos por precio en orden descendente (de mayor a menor)
+    const productosMayor = [...filtrarProductos].sort((a, b) => b.precio - a.precio);
+    setFiltrarProductos(productosMayor);
+  };
+
+  const restaurar = () => {
+    // restaura los productos originales
+    setFiltrarProductos(productosOriginales);
+  };
+
   return (
-        <>
-        return (
-            <main className="content-wrap">
-            <section className="mb-3">
-            <div className="cover-products">
-                <div className="centerflex text-center">
-                <h1>Nuestros Productos</h1>
-                </div>
+    <>
+      <main>
+        <section className="mb-3">
+          <div className="cover-products">
+            <div className="centerflex text-center">
+              <h1>Nuestros Productos</h1>
             </div>
-            </section>
-            <section className="product-showcase mb-5">
-                <h2 className="display-5 text-center text-dark mb-5 opacity-0-100">Sin conservantes • Envios gratis • Para compartir cuando quieras</h2>
-                <div id="product" className='d-flex justify-content-center'>
-                <Card>
-                        <CardBody>
-                            <CardTitle>Mix Regional</CardTitle>
-                            <CardText>
-                            "Pastafrola, medialunas y más (1 docena)"
-                            </CardText>
-                            <Button className='btn-2'>
-                                <Link to='/pastafrola'>
-                                    Ver Detalles
-                                </Link>
-                            </Button>
-                        </CardBody>
-                    </Card>
-                    <Card>
-                        <CardBody>
-                            <CardTitle>Cheesecake Festivo</CardTitle> {/* Utiliza el valor del producto para el nombre */}
-                            <CardText>
-                            Cheesecake de frutilla y chocolate (1) {/* Utiliza el valor del producto para la descripción */}
-                            </CardText>
-                            <Button className='btn-2'>
-                                <Link to='/cheesecake_festivo'>
-                                    Ver Detalles
-                                </Link>
-                            </Button>
-                        </CardBody>
-                    </Card>
-                    <Card>
-                        <CardBody>
-                            <CardTitle>Cheesecake Tradicional</CardTitle> {/* Utiliza el valor del producto para el nombre */}
-                            <CardText>
-                            Cheesecake con frutilla y pasta de maní (1) {/* Utiliza el valor del producto para la descripción */}
-                            </CardText>
-                            <Button className='btn-2'>
-                                <Link to='/cheesecake_tradicional'>
-                                    Ver Detalles
-                                </Link>
-                            </Button>
-                        </CardBody>
-                    </Card>
-                </div>
-            </section>
-            </main>
-        )
+          </div>
+        </section>
+        <section className="product-showcase mb-5">
+          <h2 className="display-5 text-center text-dark mb-5 opacity-0-100">Sin conservantes • Envíos gratis • Para compartir cuando quieras</h2>
+          <div className='centerflex'>
+            <Dropdown>
+              <Dropdown.Toggle>Filtrar</Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={filtrarPrecioMayor}>Filtrar por precio más alto</Dropdown.Item>
+                <Dropdown.Item onClick={filtrarPorPrecio}>Filtrar por precio más bajo</Dropdown.Item>
+                <Dropdown.Item onClick={restaurar}>Restaurar lista</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+          <div id="product" className='d-flex justify-content-center mt-5'>
+            {filtrarProductos.map((producto) => (
+              <Card key={producto.id}>
+                <CardBody>
+                  <CardTitle>{producto.name}</CardTitle>
+                  <CardText>$ {producto.precio}</CardText>
+                  <Button className='btn-2'>
+                    <Link to={producto.id}>
+                      Ver Detalles
+                    </Link>
+                  </Button>
+                </CardBody>
+              </Card>
+            ))}
+          </div>
+        </section>
+      </main>
     </>
-  )
-}
-export default ItemListContainer
+  );
+};
+
+export default ItemListContainer;

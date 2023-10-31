@@ -46,10 +46,9 @@ const modalContainer = document.querySelector('.modal_container');
 // iteraracion a traves de cada boton de apertura de modal
 openModals.forEach((openModalButton, index) => {
     openModalButton.addEventListener("click", (e) => {
-        e.preventDefault();
 
         // solicitud GET usando fetch para obtener el JSON de empleados
-        fetch('../json/miembros.json')
+        fetch("/src/json/miembros.json")
             .then(response => response.json())
             .then(data => {
                 // obtener el empleado correspondiente al botón que se hizo clic
@@ -88,3 +87,4 @@ if(modal){
 -Boton de eliminar todos los items
 -decoracion del mapa
 */
+

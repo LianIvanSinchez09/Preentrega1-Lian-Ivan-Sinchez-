@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
 
 const ItemDetailContainer = () => {
-    const { id } = useParams(); // Obtén el ID de los parámetros de la URL
+    const { id } = useParams(); // se obtiene la ID de los parámetros de la URL
 
     const productos = [
         {
@@ -11,6 +11,7 @@ const ItemDetailContainer = () => {
             "name": "Mix Regional",
             "description": "Pastafrola, medialunas y más (1 docena)",
             "precio": 350,
+
             "img": "imgs/products-pngs/product-1.png"
         },
         {
@@ -28,7 +29,7 @@ const ItemDetailContainer = () => {
             "img": "imgs/products-pngs/product-3.png"
         }
     ]
-
+    // sirve para encontrar el producto segun el ID
     const producto = productos.find((p) => p.id == id);
 
     return (

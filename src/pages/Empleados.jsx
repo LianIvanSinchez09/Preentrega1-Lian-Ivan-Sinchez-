@@ -1,6 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 export const Empleados = () => {
   return (
     <main className="content-wrap">
@@ -21,19 +22,19 @@ export const Empleados = () => {
                     <img src="../imgs/founder1.jpg" alt="fundador1"></img>
                     <h5 className="text-center">Gael Huertas</h5>
                     <p className="text-center text-dark">Lider de marketing</p>
-                    <a href="#" className="btn-2 modal_key">Ver Perfil</a>
+                    <a href="#" id='modal_key' className="btn-2">Ver Perfil</a>
                 </div>
                 <div id="profile-2" className="usercard">
                     <img src="../imgs/founder2.jpg" alt="fundador2"></img>
                     <h5 className="text-center">Julian Martos</h5>
                     <p className="text-center">Community Manager</p>
-                    <a href="#" className="btn-2 modal_key">Ver Perfil</a>
+                    <a href="#" id='modal_key' className="btn-2">Ver Perfil</a>
                 </div>
                 <div id="profile-3" className="usercard">
                     <img src="../imgs/founder3.jpg" alt="fundador3"></img>
                     <h5 className="text-center">Dario Caro</h5>
                     <p className="text-center">Lider chef</p>
-                    <a href="#" className="btn-2 modal_key">Ver Perfil</a>
+                    <a href="#" id='modal_key' className="btn-2">Ver Perfil</a>
                 </div>
             </div>
             <h5 className="text-center text-dark">Nuestros Empleados</h5>
@@ -42,19 +43,19 @@ export const Empleados = () => {
                     <img src="../imgs/employee1.jpg" alt="empleado1"></img>
                     <h5 className="text-center display-6">Lorena Martinez</h5>
                     <p className="text-center">Panadera Oficial</p>
-                    <a href="#" className="btn-2 modal_key">Ver Perfil</a>
+                    <a href="#" id='modal_key' className="btn-2">Ver Perfil</a>
                 </div>
                 <div id="profile-5" className="usercard">
                     <img src="../imgs/employee2.jpg" alt="empleado2"></img>
                     <h5 className="text-center">Valeria Rodriguez</h5>
                     <p className="text-center">Panadera Oficial</p>
-                    <a href="#" className="btn-2 modal_key">Ver Perfil</a>
+                    <a href="#" id='modal_key' className="btn-2">Ver Perfil</a>
                 </div>
                 <div id="profile-6" className="usercard">
                     <img src="../imgs/employee3.jpg" alt="empleado3"></img>
                     <h5 className="text-center">Luis Caro</h5>
                     <p className="text-center">Panadero Oficial</p>
-                    <a href="#" className="btn-2 modal_key">Ver Perfil</a>
+                    <a href="#" id='modal_key' className="btn-2">Ver Perfil</a>
                 </div>
             </div>
         </section>

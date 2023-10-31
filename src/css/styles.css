@@ -33,6 +33,7 @@
 }
 
 
+
 .content-wrap {
   min-height: 100%;
   display: flex;
@@ -53,10 +54,9 @@
 }
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  /* outline: 3px solid limegreen !important; */
 }
 
 .custom-links{
@@ -82,31 +82,21 @@ a, a:active, a:focus {
   text-decoration: none;
   transition-timing-function: ease-in-out;
   text-decoration: none;
-  /* color: lightgrey; */
   font-family: "Bebas Neue", sans-serif;
 }
 main {
   background-color: white;
-  display: flex;
-  flex-direction: column;
+  flex: 1;
+  min-height: 100vh;
 }
 
 html, body {
-  overflow-x: hidden;
   margin: 0;
   padding: 0;
-}
-
-/* body {
-  position: relative;
-} */
-
-ul {
-  list-style: none;
-}
-
-form {
-  font-size: 1.5rem;
+  /* overflow-x: hidden; */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* NAVBAR */
@@ -143,8 +133,8 @@ nav {
   background-image: url(../imgs/bg-intro.jpeg);
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   min-height: 100vh;
-  width: 100%;
 }
 .bg-intro h1 {
   font-size: 80px;
@@ -319,10 +309,6 @@ nav {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-
-.miembros-section {
-  background-color: antiquewhite;
-}
 .miembros-section h5 {
   font-size: 50px;
   margin-top: 5rem;
@@ -446,12 +432,15 @@ nav {
   font-size: 70px;
 }
 
+.product-page{
+  padding: 50px;
+}
+
 .cover-products {
   background: url(../imgs/bg-products.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  min-width: 100vw;
   padding: 10rem;
 }
 .cover-products h1 {
@@ -515,20 +504,16 @@ nav {
   width: 25%;
 }
 
-.footer-line {
-  border-top: 1px solid white;
-  margin-bottom: -7rem;
-}
-
 footer {
   --mask:
     radial-gradient(178.89px at 50% 240.00px,#000 99%,#0000 101%) calc(50% - 160px) 0/320px 100%,
     radial-gradient(178.89px at 50% -160px,#0000 99%,#000 101%) 50% 80px/320px 100% repeat-x;
   -webkit-mask: var(--mask);
   mask: var(--mask);
-  display: flex;
   background: rgb(0, 0, 0);
   background: linear-gradient(52deg, rgb(0, 0, 0) 0%, rgb(67, 6, 6) 63%, rgb(161, 15, 15) 100%, rgb(0, 0, 0) 100%);
+  text-align: center;
+  padding: 10px;
 }
 
 footer a {
