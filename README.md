@@ -2,4 +2,4 @@
 
 Hecho por Lian Ivan Sinchez
 
-https://imgur.com/a/kJo7Gq3
+https://imgur.com/a/DJZuftd
