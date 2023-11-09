@@ -261,11 +261,122 @@ nav {
   gap: 30%;
 }
 
+.card-container{
+  position: relative;
+  z-index: 1;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  border: 2px solid white;
+}
+.card-container:hover{
+  .usercardPfp-bg{
+      -webkit-filter: blur(5px);
+      -moz-filter: blur(5px);
+      -o-filter: blur(5px);
+      -ms-filter: blur(5px);
+      filter: blur(5px);
+  }
+}
+.fx-card{
+  /* indico hacia donde va el gradiente (to right || to left) */
+  background:linear-gradient(to right, rgb(0, 0, 0) 50%, rgb(255, 255, 255) 50%) no-repeat left / 200%;
+  background-size: 200%;
+  transition: transform 0.5s ,background-position .3s ease;
+
+}
+.custom-text{
+  margin: 0.3rem;
+  color: white;
+}
+.fx-card:hover{
+  background-position: right;
+  transform: scale(105%);
+  .role-circle{
+      border: 2px solid black;
+      .custom-text{
+          color: black;
+      }
+  }
+  .title-styling{
+      color: black;
+  }
+}
+.fx-card:hover h1{
+  color: black;
+}
+/* grilla principal para controlar posicionamiento de los productos */
 .sales-index {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 0.1fr));
   grid-gap: 1.2rem;
   justify-content: center;
+}
+.usercard{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+  height: 480px;
+
+}
+.usercardPfp-container{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  background-image: url('imgs/employee1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-bottom: 3px solid white;
+  z-index: -1;
+}
+.usercardPfp{
+  position: relative;
+  margin: 10px;
+  top: 2rem;
+  height: 10rem;
+  width: 10rem;
+  z-index: 1;
+  outline: 3px solid white;
+  border-radius: 50%;
+  margin-top: 10px;
+}
+.usercardPfp-bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: inherit;
+  background-repeat: inherit;
+  background-size: inherit;
+  z-index: -2;
+}
+.desc-container{
+  height: 100%;
+}
+.detail-button{
+  position: relative;
+}
+.roles-container{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 6rem 6rem 6rem;
+  gap: 10px;
+}
+.role-circle{
+  border: 2px solid white;
+  min-height: 0;
+  border-radius: 50px;
+}
+.card-title{
+  border-bottom: rgb(185, 155, 155) 3px solid;
+}
+.title-styling{
+  color: white;
 }
 
 .traditions-ad {

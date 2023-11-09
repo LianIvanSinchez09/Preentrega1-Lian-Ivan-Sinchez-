@@ -16,6 +16,7 @@ import ShoppingCartContext from './components/ShoppingCartContext'
 import ComponenteA from './components/ComponenteA'
 import ComponenteB from './components/ComponenteB'
 import './js/body'
+import Testing from './pages/Testing'
 
 
 const App = () => {
@@ -51,6 +52,7 @@ const App = () => {
             <Route exact path='/cart' element={<Cart/>}/>
             <Route exact path='/:id' element={<ItemDetailContainer/>}/>
             <Route exact path='/empleados' element={<Empleados/>}/>
+            <Route exact path='/Testing' element={<Testing/>}/>
           </Routes>
         </BrowserRouter>
         {/* <ShoppingCartContext>

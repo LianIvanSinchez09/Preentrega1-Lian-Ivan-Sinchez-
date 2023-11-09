@@ -1,7 +1,4 @@
 
-
-// Productos que se muestran en la pagina pages/productos.html
-
 function productosShowcase(id, nombre, descripcion, altDescription, altImg , origen, precio, imagen){
   this.id = id;
   this.nombre = nombre;
@@ -23,14 +20,13 @@ const showcase = [
 let carrito = [];
 
 function actualizarCarro() {
-    // Obtén el elemento donde mostrarás los productos y el total en tu HTML
+
     const carritoElement = document.getElementById('carrito');
     const totalElement = document.getElementById('total');
   
-    // Limpia el contenido actual del carrito
+
     carritoElement.innerHTML = '';
   
-    // Calcula el total y muestra cada producto en el carrito
     let total = 0;
   
     carrito.forEach((producto, index) => {
@@ -41,7 +37,7 @@ function actualizarCarro() {
         <button type="button" class="secondary-btn mx-2" onclick="borrarItems(${index})">Eliminar</button>
         </div>
       `;
-      // Muestra el total en el elemento correspondiente
+
       carritoElement.appendChild(productoElement);
     })
     totalElement.innerHTML = `

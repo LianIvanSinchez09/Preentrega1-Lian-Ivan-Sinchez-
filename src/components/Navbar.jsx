@@ -21,6 +21,7 @@ export const NavigationBar = () => {
                 <ul className='navbar-nav navbar-links'>
                     <Nav className="mr-auto">
                         <Link to='/' className='mx-2 custom-links nav-item link-nav display-6'>Productos</Link>
+                        <Link to='/Testing' className='mx-2 custom-links nav-item link-nav display-6'>Testing</Link>
                         <Link to='/empleados' className='mx-2 custom-links nav-item link-nav display-6'>Empleados</Link>
                         <Link>
                             <CartWidget/>

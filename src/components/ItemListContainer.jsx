@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 const ItemListContainer = () => {
   const [productosOriginales, setProductosOriginales] = useState([]);
   const [filtrarProductos, setFiltrarProductos] = useState([]);
-  const [filtrarPorMayor, setFiltrarPorMayor] = useState([]);
 
   useEffect(() => {
     // realiza la carga de datos desde el archivo JSON usando fetch
@@ -25,13 +24,13 @@ const ItemListContainer = () => {
   }, []);
 
   const filtrarPorPrecio = () => {
-    // Ordena los productos por precio en orden ascendente
+    // ordena los productos por precio en orden ascendente
     const productosOrdenados = [...filtrarProductos].sort((a, b) => a.precio - b.precio);
     setFiltrarProductos(productosOrdenados);
   };
 
   const filtrarPrecioMayor = () => {
-    // Ordena los productos por precio en orden descendente (de mayor a menor)
+    // ordena los productos por precio en orden descendente (de mayor a menor)
     const productosMayor = [...filtrarProductos].sort((a, b) => b.precio - a.precio);
     setFiltrarProductos(productosMayor);
   };
