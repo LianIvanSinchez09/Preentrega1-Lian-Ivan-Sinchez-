@@ -13,8 +13,6 @@ import ItemListContainer from './components/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer'
 import Cart from './components/Cart'
 import ShoppingCartContext from './components/ShoppingCartContext'
-import ComponenteA from './components/ComponenteA'
-import ComponenteB from './components/ComponenteB'
 import './js/body'
 import Testing from './pages/Testing'
 
@@ -47,8 +45,8 @@ const App = () => {
       <BrowserRouter>
         <NavigationBar/>
           <Routes>
-            <Route exact path="/" element={<ItemListContainer/>}/>
-            <Route exact path='/Home' element={<Home/>}/>
+            <Route exact path="/" element={<Home/>}/>
+            <Route exact path='/Productos' element={<ItemListContainer/>}/>
             <Route exact path='/cart' element={<Cart/>}/>
             <Route exact path='/:id' element={<ItemDetailContainer/>}/>
             <Route exact path='/empleados' element={<Empleados/>}/>

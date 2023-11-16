@@ -15,12 +15,12 @@ export const NavigationBar = () => {
   return (
     <header>
         <Navbar bg="light" expand="lg">
-            <Link className='custom-links navbrand' to='/Home'>Los Cuatro Alamos</Link>
+            <Link className='custom-links navbrand' to='/'>Los Cuatro Alamos</Link>
             <NavbarToggle aria-controls="basic-navbar-nav" />
             <NavbarCollapse id="basic-navbar-nav">
                 <ul className='navbar-nav navbar-links'>
                     <Nav className="mr-auto">
-                        <Link to='/' className='mx-2 custom-links nav-item link-nav display-6'>Productos</Link>
+                        <Link to='/Productos' className='mx-2 custom-links nav-item link-nav display-6'>Productos</Link>
                         <Link to='/Testing' className='mx-2 custom-links nav-item link-nav display-6'>Testing</Link>
                         <Link to='/empleados' className='mx-2 custom-links nav-item link-nav display-6'>Empleados</Link>
                         <Link>

@@ -82,7 +82,6 @@ const ItemListContainer = () => {
                   <CardBody>
                     <CardImg variant="top" src={producto.imagen} alt={producto.alt} />
                     <h1 className='text-dark'>{producto.nombre}</h1>
-                    <p className='text-dark display-4'>{producto.desc}</p>
                   </CardBody>
                   <ListGroup>
                     <ListGroupItem>$ {producto.precio}</ListGroupItem>

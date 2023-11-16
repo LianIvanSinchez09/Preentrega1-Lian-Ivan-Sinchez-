@@ -5,8 +5,7 @@ import { collection, getDocs, getFirestore } from 'firebase/firestore';
 
 const ItemDetailContainer = () => {
     const { id } = useParams(); // obtiene la ID de los parametros de la URL
-    const [productos, setProductos] = useState([])
-
+    
     useEffect(() =>{
         const dbProd = getFirestore()
         const prodCollection = collection(dbProd, 'productos')
@@ -20,15 +19,26 @@ const ItemDetailContainer = () => {
         })
       }, [])
 
+      const [productos, setProductos] = useState([])
+      
     // sirve para encontrar el producto segun el ID
     const producto = productos.find((p) => 
-          p.id == id
+          p.id === id
     );
 
 
     return (
         <main className='content-wrap centerflex'>
-            <ItemDetail producto={producto} />
+            {producto ? 
+            
+              <ItemDetail producto={producto} /> 
+              
+              : 
+              
+              <main className='centerflex'>
+                <h1 className='text-dark'>Producto no encontrado</h1>
+              </main>
+            }
         </main>
     );
 };
