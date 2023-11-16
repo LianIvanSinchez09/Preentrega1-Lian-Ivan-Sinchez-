@@ -1,41 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
 
 const ItemDetailContainer = () => {
-    const { id } = useParams(); // se obtiene la ID de los parámetros de la URL
+    const { id } = useParams(); // obtiene la ID de los parametros de la URL
+    const [productos, setProductos] = useState([])
 
-    const productos = [
-        {
-            "id": "pastafrola",
-            "name": "Mix Regional",
-            "description": "Pastafrola, medialunas y más (1 docena)",
-            "precio": 350,
+    useEffect(() =>{
+        const dbProd = getFirestore()
+        const prodCollection = collection(dbProd, 'productos')
+        getDocs(prodCollection)
+        .then((snapshot) => {
+          const docs = snapshot.docs.map((doc) => doc.data())
+          setProductos(docs)
+        })
+        .catch((error) => {
+          console.error("Error al cargar los productos:", error)
+        })
+      }, [])
 
-            "img": "imgs/products-pngs/product-1.png"
-        },
-        {
-            "id": "cheesecake_festivo",
-            "name": "Cheesecake Festivo",
-            "description": "Cheesecake de frutilla y chocolate (1)",
-            "precio": 550,
-            "img": "imgs/products-pngs/product-2.png"
-        },
-        {
-            "id": "cheesecake_tradicional",
-            "name": "Cheesecake Tradicional",
-            "description": "Cheesecake con frutilla y pasta de maní (1)",
-            "precio": 150,
-            "img": "imgs/products-pngs/product-3.png"
-        }
-    ]
     // sirve para encontrar el producto segun el ID
-    const producto = productos.find((p) => p.id == id);
+    const producto = productos.find((p) => 
+          p.id == id
+    );
+
 
     return (
-        <div>
+        <main className='content-wrap centerflex'>
             <ItemDetail producto={producto} />
-        </div>
+        </main>
     );
 };
 

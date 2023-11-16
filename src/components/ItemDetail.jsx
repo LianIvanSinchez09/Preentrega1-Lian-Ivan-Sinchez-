@@ -26,8 +26,9 @@ const ItemDetail = ({ producto }) => {
         <main className='margin-top centerflex'>
             <Card className='usercard'>
                 <CardBody>
-                    <CardTitle>{producto.name}</CardTitle>
-                    <CardText>{producto.description}</CardText>
+                    <CardImg src={producto.imagen}></CardImg>
+                    <CardTitle>{producto.nombre}</CardTitle>
+                    <CardText>{producto.desc}</CardText>
                     <CardText>$ {producto.precio}</CardText>
                     <div>
                         <Row>

@@ -1,66 +1,114 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState, useEffect } from 'react';
+import {collection, getDocs, getFirestore} from 'firebase/firestore'
+import { listAll, ref } from 'firebase/storage';
+import Loader from '../components/Loader';
 
 
 export const Empleados = () => {
-  return (
-    <main className="content-wrap">
+    const [perfiles, setPerfiles] = useState([])
+    useEffect(() =>{
+      //getFirestore: input de los datos de la database formada en firestore por el dev
+      const dataBase = getFirestore()
+      //especifico cual coleccion de la database queremos, en este caso los perfiles
+      const profileCollection = collection(dataBase, 'perfiles')
+      //getDocs trae la informacion de la variable con la collection a eleccion
+      getDocs(profileCollection).then((snapshot) => {
+        const docs = snapshot.docs.map((doc) => doc.data())
+        setPerfiles(docs)
+      })
+    }, [])
+
+    //lo mismo que el useState de perfiles pero para los empleados
+    const [perfilesEmpleados, setPerfilesEmpleados] = useState([])
+    useEffect(() =>{
+        const databasePerfiles2 = getFirestore()
+        const profileCollection = collection(databasePerfiles2, 'perfiles-low-tier')
+        getDocs(profileCollection).then((snapshot2) => {
+          const docs2 = snapshot2.docs.map((doc2) => doc2.data())
+          setPerfilesEmpleados(docs2)
+        })
+      }, [])
+    
+      const [loading, setLoading] = useState(true)
+      
+      useEffect(() => {
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 5000)
+    }, [])
+
+    return (
+    <main  className="content-wrap">
         <section className="empleados-cover container-fluid">
             <div className="text-center filter-bg fs-6">
                 <h1>Unite a la mejor panadería de Argentina</h1>
             </div>
         </section>
-        <section id="modal" className="modal">
-            <div className="modal_container">
+        {
+            loading ? 
 
+            <Loader/>
+
+            :
+        <>
+        <section className="sales-index miembros-section">
+            {
+            perfiles.map((lider) => (
+            <div className="fx-card card-container card-bg">
+                <div className="usercard">
+                    <div className="usercardPfp-container">
+                        <div className="usercardPfp-bg"></div>
+                        <img className="usercardPfp" src={lider.perfilPic} alt={lider.alt}></img>
+                    </div>
+                    <div className="desc-container">
+                        <div className="card-title title-styling">
+                            <h2 className='title-styling mt-1'>{lider.nombre} {lider.apellido}</h2>
+                        </div>
+                        <div className="roles-container">
+                            <div className="role-circle">
+                                <p className="title-styling">{lider.cargo}</p>
+                            </div>
+                        </div>
+                        <button className="detail-button main-btn">Ver perfil</button>
+                    </div>
+                </div>
             </div>
+            ))
+            }
         </section>
-        <section className="miembros-section border">
-            <h5 className="text-center text-dark">Nuestros lideres</h5>
-            <div className="admins-section">
-                <div id="profile-1" className="usercard">
-                    <img src="../imgs/founder1.jpg" alt="fundador1"></img>
-                    <h5 className="text-center">Gael Huertas</h5>
-                    <p className="text-center text-dark">Lider de marketing</p>
-                    <a href="#" id='modal_key' className="btn-2">Ver Perfil</a>
-                </div>
-                <div id="profile-2" className="usercard">
-                    <img src="../imgs/founder2.jpg" alt="fundador2"></img>
-                    <h5 className="text-center">Julian Martos</h5>
-                    <p className="text-center">Community Manager</p>
-                    <a href="#" id='modal_key' className="btn-2">Ver Perfil</a>
-                </div>
-                <div id="profile-3" className="usercard">
-                    <img src="../imgs/founder3.jpg" alt="fundador3"></img>
-                    <h5 className="text-center">Dario Caro</h5>
-                    <p className="text-center">Lider chef</p>
-                    <a href="#" id='modal_key' className="btn-2">Ver Perfil</a>
-                </div>
-            </div>
-            <h5 className="text-center text-dark">Nuestros Empleados</h5>
-            <div className="employee-section">
-                <div id="profile-4" className="usercard">
-                    <img src="../imgs/employee1.jpg" alt="empleado1"></img>
-                    <h5 className="text-center display-6">Lorena Martinez</h5>
-                    <p className="text-center">Panadera Oficial</p>
-                    <a href="#" id='modal_key' className="btn-2">Ver Perfil</a>
-                </div>
-                <div id="profile-5" className="usercard">
-                    <img src="../imgs/employee2.jpg" alt="empleado2"></img>
-                    <h5 className="text-center">Valeria Rodriguez</h5>
-                    <p className="text-center">Panadera Oficial</p>
-                    <a href="#" id='modal_key' className="btn-2">Ver Perfil</a>
-                </div>
-                <div id="profile-6" className="usercard">
-                    <img src="../imgs/employee3.jpg" alt="empleado3"></img>
-                    <h5 className="text-center">Luis Caro</h5>
-                    <p className="text-center">Panadero Oficial</p>
-                    <a href="#" id='modal_key' className="btn-2">Ver Perfil</a>
+        <section className="sales-index miembros-section">
+        {
+            perfilesEmpleados.map((emp) => (
+            <div className="fx-card card-container card-bg">
+                <div className="usercard">
+                    <div className="usercardPfp-container">
+                        <div className="usercardPfp-bg"></div>
+                        <img className="usercardPfp" src={emp.perfilPic}></img>
+                    </div>
+                    <div className="desc-container">
+                        <div className="card-title title-styling">
+                            <h2 className='title-styling mt-1'>{emp.nombre} {emp.apellido}</h2>
+                        </div>
+                        <div className="roles-container">
+                            <div className="role-circle">
+                                <p className="title-styling">{emp.cargo}</p>
+                            </div>
+                        </div>
+                        <button className="detail-button main-btn">Ver perfil</button>
+                    </div>
                 </div>
             </div>
+            ))
+            }
         </section>
+        </>
+        
+        }
     </main>
-  )
+    )
 }
 
 export default Empleados

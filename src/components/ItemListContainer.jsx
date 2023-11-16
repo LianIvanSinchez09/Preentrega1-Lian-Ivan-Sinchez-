@@ -2,26 +2,30 @@ import React, { useState, useEffect } from 'react';
 import ItemDetail from './ItemDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/styles.css';
-import { Card, CardBody, CardTitle, CardText, Button, Dropdown } from 'react-bootstrap';
+import { Card, CardBody, CardImg, CardLink, CardTitle, ListGroup , ListGroupItem, Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
+import { collection, getDocs, getFirestore } from 'firebase/firestore';
+
 
 const ItemListContainer = () => {
   const [productosOriginales, setProductosOriginales] = useState([]);
   const [filtrarProductos, setFiltrarProductos] = useState([]);
-
-  useEffect(() => {
-    // realiza la carga de datos desde el archivo JSON usando fetch
-    fetch('/src/json/productos.json')
-      .then((res) => res.json())
-      .then((json) => {
-        // guarda los datos originales y los filtra por defecto al cargar
-        setProductosOriginales(json);
-        setFiltrarProductos(json);
-      })
-      .catch((error) => {
-        console.error('Error al cargar datos:', error);
-      });
-  }, []);
+  const [productos, setProductos] = useState([])
+  
+  useEffect(() =>{
+    const dbProd = getFirestore()
+    const prodCollection = collection(dbProd, 'productos')
+    getDocs(prodCollection)
+    .then((snapshot) => {
+      const docs = snapshot.docs.map((doc) => doc.data())
+      setProductos(docs)
+      setFiltrarProductos(docs)
+      setProductosOriginales(docs)
+    })
+    .catch((error) => {
+      console.error("Error al cargar los productos:", error)
+    })
+  }, [])
 
   const filtrarPorPrecio = () => {
     // ordena los productos por precio en orden ascendente
@@ -33,12 +37,22 @@ const ItemListContainer = () => {
     // ordena los productos por precio en orden descendente (de mayor a menor)
     const productosMayor = [...filtrarProductos].sort((a, b) => b.precio - a.precio);
     setFiltrarProductos(productosMayor);
-  };
+  }
 
   const restaurar = () => {
     // restaura los productos originales
     setFiltrarProductos(productosOriginales);
-  };
+  }
+
+  const [Loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setLoading(true)
+    setTimeout(()=>{
+      setLoading(false)
+    }, 5000)
+  })
+
 
   return (
     <>
@@ -54,26 +68,30 @@ const ItemListContainer = () => {
           <h2 className="display-5 text-center text-dark mb-5 opacity-0-100">Sin conservantes • Envíos gratis • Para compartir cuando quieras</h2>
           <div className='centerflex'>
             <Dropdown>
-              <Dropdown.Toggle>Filtrar</Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item onClick={filtrarPrecioMayor}>Filtrar por precio más alto</Dropdown.Item>
-                <Dropdown.Item onClick={filtrarPorPrecio}>Filtrar por precio más bajo</Dropdown.Item>
-                <Dropdown.Item onClick={restaurar}>Restaurar lista</Dropdown.Item>
-              </Dropdown.Menu>
+              <DropdownToggle>Filtrar</DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem onClick={filtrarPrecioMayor}>Filtrar por precio más alto</DropdownItem>
+                <DropdownItem onClick={filtrarPorPrecio}>Filtrar por precio más bajo</DropdownItem>
+                <DropdownItem onClick={restaurar}>Restaurar lista</DropdownItem>
+              </DropdownMenu>
             </Dropdown>
           </div>
-          <div id="product" className='d-flex justify-content-center mt-5'>
+          <div id="product" className='mt-5 sales-index'>
             {filtrarProductos.map((producto) => (
-              <Card key={producto.id}>
-                <CardBody>
-                  <CardTitle>{producto.name}</CardTitle>
-                  <CardText>$ {producto.precio}</CardText>
-                  <Button className='btn-2'>
-                    <Link to={producto.id}>
+                <Card key={producto.nombre} className='product-card'>
+                  <CardBody>
+                    <CardImg variant="top" src={producto.imagen} alt={producto.alt} />
+                    <h1 className='text-dark'>{producto.nombre}</h1>
+                    <p className='text-dark display-4'>{producto.desc}</p>
+                  </CardBody>
+                  <ListGroup>
+                    <ListGroupItem>$ {producto.precio}</ListGroupItem>
+                  </ListGroup>
+                  <CardBody>
+                    <CardLink href={producto.id} className='btn-2'>
                       Ver Detalles
-                    </Link>
-                  </Button>
-                </CardBody>
+                    </CardLink>
+                  </CardBody>
               </Card>
             ))}
           </div>

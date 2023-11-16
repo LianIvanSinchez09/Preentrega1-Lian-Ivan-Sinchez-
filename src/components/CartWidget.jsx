@@ -4,7 +4,7 @@ import {Dropdown ,DropdownMenu, DropdownToggle} from 'react-bootstrap';
 import '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import ItemListContainer from './ItemListContainer';
+import ItemListContainer from '../components/ItemListContainer';
 
 const CartWidget = () => {
   return (

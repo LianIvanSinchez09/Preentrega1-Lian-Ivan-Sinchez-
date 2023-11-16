@@ -9,7 +9,7 @@ import { Navbar, Nav, Accordion, Card, NavbarToggle, NavbarCollapse, NavbarBrand
 import { Link } from 'react-router-dom';
 import Empleados from '../pages/Empleados';
 import Home from '../pages/Home';
-import ItemListContainer from './ItemListContainer';
+import ItemListContainer from '../components/ItemListContainer';
 
 export const NavigationBar = () => {
   return (

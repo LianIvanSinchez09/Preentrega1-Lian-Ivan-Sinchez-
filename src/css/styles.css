@@ -289,22 +289,6 @@ nav {
   margin: 0.3rem;
   color: white;
 }
-.fx-card:hover{
-  background-position: right;
-  transform: scale(105%);
-  .role-circle{
-      border: 2px solid black;
-      .custom-text{
-          color: black;
-      }
-  }
-  .title-styling{
-      color: black;
-  }
-}
-.fx-card:hover h1{
-  color: black;
-}
 /* grilla principal para controlar posicionamiento de los productos */
 .sales-index {
   display: grid;
@@ -320,13 +304,13 @@ nav {
   background-size: cover;
   background-position: center;
   height: 480px;
-
+  border: 3px solid black;
 }
 .usercardPfp-container{
   display: flex;
   justify-content: center;
   position: relative;
-  background-image: url('imgs/employee1.jpg');
+  /* background-image: url('imgs/employee1.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
   border-bottom: 3px solid white;
@@ -354,7 +338,24 @@ nav {
   background-size: inherit;
   z-index: -2;
 }
+.fx-card:hover{
+  background-position: right;
+  transform: scale(105%);
+  .usercardPfp-container{
+    border-bottom: 3px solid black;
+  }
+  .usercardPfp{
+    outline: 3px solid black;
+  }
+  .title-styling{
+      color: black;
+  }
+}
+.fx-card:hover h1{
+  color: black;
+}
 .desc-container{
+  margin-top: 1rem;
   height: 100%;
 }
 .detail-button{
@@ -391,21 +392,6 @@ nav {
   border-radius: 50%;
 }
 
-.box-contact-index {
-  border-radius: 12px;
-  box-shadow: 10px 10px 5px 0px rgba(199, 124, 124, 0.75);
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(199, 124, 124, 0.75);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(199, 124, 124, 0.75);
-  background-color: black;
-  padding: 2rem;
-  width: 50%;
-  height: 50%;
-  flex-direction: column;
-}
-.box-contact-index button {
-  border-radius: 12px;
-}
-
 .empleados-cover {
   background-size: cover;
   min-height: 100vh;
@@ -420,14 +406,13 @@ nav {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.miembros-section h5 {
-  font-size: 50px;
+.miembros-section{
   margin-top: 5rem;
 }
 
-.admins-section {
+/* .admins-section {
   gap: 15rem;
-}
+} */
 
 .employee-section {
   margin-top: 5rem;
@@ -438,34 +423,13 @@ nav {
   margin-bottom: 5rem;
 }
 
-.hover-animation {
+/* .hover-animation {
   transition: transform 0.3s ease;
 }
 .hover-animation:hover {
   transform: scale(1.05);
-}
+} */
 
-.usercard {
-  display: grid;
-  place-items: center;
-  background-color: white;
-  border-radius: 15px;
-  padding: 15px;
-  width: auto;
-}
-.usercard img {
-  border: #fff 2px solid;
-  border-radius: 10px;
-}
-.usercard h5 {
-  font-size: 50px;
-  color: black;
-  margin: 0;
-}
-.usercard p {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 30px;
-}
 
 /* CONTACTOS */
 .bg-form {
