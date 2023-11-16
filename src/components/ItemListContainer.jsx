@@ -87,9 +87,9 @@ const ItemListContainer = () => {
                     <ListGroupItem>$ {producto.precio}</ListGroupItem>
                   </ListGroup>
                   <CardBody>
-                    <CardLink href={producto.id} className='btn-2'>
+                    <Link to={`/Productos/${producto.id}`} className='btn-2'>
                       Ver Detalles
-                    </CardLink>
+                    </Link>
                   </CardBody>
               </Card>
             ))}

@@ -1,8 +1,28 @@
 import React from 'react'
 import '../css/styles.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState, useEffect } from 'react';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import { Card, CardBody, CardImg, CardLink, CardTitle, ListGroup , ListGroupItem, Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'react-bootstrap'
 
 const Home = () => {
+
+  const [productosHome, setProductosHome] = useState([])
+
+  useEffect(() =>{
+    //getFirestore: input de los datos de la database formada en firestore por el dev
+    const dataBase = getFirestore()
+    //especifico cual coleccion de la database queremos, en este caso los perfiles
+    const prodDb = collection(dataBase, 'productos')
+    //getDocs trae la informacion de la variable con la collection a eleccion
+    getDocs(prodDb).then((snapshot) => {
+      const docs = snapshot.docs.map((doc) => doc.data())
+      setProductosHome(docs)
+    })
+  }, [])
+
+  let i = 0
+
   return(
     <main>
       <section className="bg-intro">
@@ -18,7 +38,22 @@ const Home = () => {
       </section>
       <section className="container-fluid">
         <div className="container-fluid sales-index">
-          {/* tarjetas añadidas con js en js/almacenProductos.js */}
+          {productosHome.slice(0, 3).map((p, index) => (
+            <Card key={p.nombre + index} className="product-card">
+              <CardBody>
+                <CardImg variant="top" src={p.imagen} alt={p.alt} />
+                <h1 className="text-dark">{p.nombre}</h1>
+              </CardBody>
+              <ListGroup>
+                <ListGroupItem>$ {p.precio}</ListGroupItem>
+              </ListGroup>
+              <CardBody>
+                <CardLink href={p.id} className="btn-2">
+                  Ver Detalles
+                </CardLink>
+              </CardBody>
+            </Card>
+          ))}
         </div>
       </section>
       <section className="title-cover">

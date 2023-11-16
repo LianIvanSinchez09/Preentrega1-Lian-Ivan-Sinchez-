@@ -23,7 +23,7 @@ const ItemDetail = ({ producto }) => {
         <main className='content-wrap margin-top centerflex'>
             <section className='product-grid'>
                 <div className='product-details'>
-                    <Link to="/" className='mx-5'>
+                    <Link to="/Productos" className='mx-5'>
                         <button className='btn-goback'>Ir atras</button>
                     </Link>
                     <Card className='product-card-in-grid'>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
+import Loader from './Loader';
 
 const ItemDetailContainer = () => {
     const { id } = useParams(); // obtiene la ID de los parametros de la URL
@@ -26,18 +27,24 @@ const ItemDetailContainer = () => {
           p.id === id
     );
 
+    const [loading, setLoading] = useState(true)
+      
+    useEffect(() => {
+      setLoading(true)
+      setTimeout(() => {
+          setLoading(false)
+      }, 3000)
+  }, [])
 
     return (
         <main className='content-wrap centerflex'>
-            {producto ? 
+            {loading ? 
             
-              <ItemDetail producto={producto} /> 
+              <Loader/>
               
               : 
               
-              <main className='centerflex'>
-                <h1 className='text-dark'>Producto no encontrado</h1>
-              </main>
+              <ItemDetail producto={producto} /> 
             }
         </main>
     );
