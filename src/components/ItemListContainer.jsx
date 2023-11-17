@@ -8,10 +8,12 @@ import { collection, getDocs, getFirestore } from 'firebase/firestore';
 
 
 const ItemListContainer = () => {
+  
   const [productosOriginales, setProductosOriginales] = useState([]);
   const [filtrarProductos, setFiltrarProductos] = useState([]);
   const [productos, setProductos] = useState([])
   
+  //db de Firestore con los productos
   useEffect(() =>{
     const dbProd = getFirestore()
     const prodCollection = collection(dbProd, 'productos')
@@ -43,16 +45,6 @@ const ItemListContainer = () => {
     // restaura los productos originales
     setFiltrarProductos(productosOriginales);
   }
-
-  const [Loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    setLoading(true)
-    setTimeout(()=>{
-      setLoading(false)
-    }, 5000)
-  })
-
 
   return (
     <>

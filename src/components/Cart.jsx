@@ -1,13 +1,19 @@
-import React from 'react'
-import AddAction from './AddAction'
+import React from 'react';
 
-
-const Cart = () => {
+export const Cart = ({ carrito, removeFromCarrito }) => {
   return (
-    <div>
-        <AddAction carrito={carrito} removeFromCarrito={removeFromCarrito} />
-    </div>
-  )
-}
+    <main className='content-wrap margin-top'>
+      <h2 className='text-dark'>Carrito de Compras</h2>
+      <div>
+        {carrito && carrito.map((item) => (
+          <li key={item.id}>
+            {item.nombre} - ${item.precio}
+            <button className='btn-2' onClick={() => removeFromCarrito(item.id)}>Eliminar</button>
+          </li>
+        ))}
+      </div>
+    </main>
+  );
+};
 
-export default Cart
+export default Cart;

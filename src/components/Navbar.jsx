@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CartWidget from './CartWidget';
 import '../css/styles.css';
@@ -11,28 +11,24 @@ import Empleados from '../pages/Empleados';
 import Home from '../pages/Home';
 import ItemListContainer from '../components/ItemListContainer';
 
-export const NavigationBar = () => {
-  return (
-    <header>
+export const NavigationBar = ({ cartItemCount, removeFromCarrito }) => {
+    
+    return (
+      <header>
         <Navbar bg="light" expand="lg">
-            <Link className='custom-links navbrand' to='/'>Los Cuatro Alamos</Link>
-            <NavbarToggle aria-controls="basic-navbar-nav" />
-            <NavbarCollapse id="basic-navbar-nav">
-                <ul className='navbar-nav navbar-links'>
-                    <Nav className="mr-auto">
-                        <Link to='/Productos' className='mx-2 custom-links nav-item link-nav display-6'>Productos</Link>
-                        <Link to='/empleados' className='mx-2 custom-links nav-item link-nav display-6'>Empleados</Link>
-                        <Link to='/Carrito' className='mx-2 custom-links nav-item link-nav display-6'>Carrito</Link>
-                        <Link>
-                            <CartWidget/>
-                        </Link>
-                        
-                    </Nav>
-                </ul>
-            </NavbarCollapse>
+          <Link className='custom-links navbrand' to='/'>Los Cuatro Alamos</Link>
+          <NavbarToggle aria-controls="basic-navbar-nav" />
+          <NavbarCollapse id="basic-navbar-nav">
+            <ul className='navbar-nav navbar-links'>
+              <Nav className="mr-auto">
+                <Link to='/Productos' className='mx-2 custom-links nav-item link-nav display-6'>Productos</Link>
+                <Link to='/empleados' className='mx-2 custom-links nav-item link-nav display-6'>Empleados</Link>
+              </Nav>
+            </ul>
+          </NavbarCollapse>
         </Navbar>
- </header>
-  )
-}
+      </header>
+    );
+  }
 
 export default Navbar

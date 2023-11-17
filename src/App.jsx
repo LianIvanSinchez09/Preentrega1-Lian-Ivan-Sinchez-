@@ -11,22 +11,10 @@ import Footer from './components/Footer'
 import Empleados from './pages/Empleados'
 import ItemListContainer from './components/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer'
-import Cart from './components/AddAction'
-import ShoppingCartContext from './components/ShoppingCartContext'
-import AddAction from './components/AddAction'
+import Cart from './components/Cart'
+import AddAction from './components/Cart'
 
 const App = () => {
-  const [carrito, setCarrito] = useState([]);
-
-  const addToCarrito = (item) => {
-    setCarrito([...carrito, item]);
-  };
-
-  const removeFromCarrito = (itemId) => {
-    const updatedCarrito = carrito.filter((item) => item.id !== itemId);
-    setCarrito(updatedCarrito);
-  };
-
   return (
     <>
       <BrowserRouter>
@@ -37,7 +25,7 @@ const App = () => {
             <Route exact path='/cart' element={<Cart/>}/>
             <Route exact path='/Productos/:id' element={<ItemDetailContainer/>}/>
             <Route exact path='/empleados' element={<Empleados/>}/>
-            <Route exact path='/Carrito' element={<Cart/>}/>
+            <Route exact path='/CartPage' element={<Cart/>}/>
           </Routes>
         </BrowserRouter>
       <Footer/>

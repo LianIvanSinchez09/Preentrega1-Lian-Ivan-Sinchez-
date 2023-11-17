@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from 'react';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { Card, CardBody, CardImg, CardLink, CardTitle, ListGroup , ListGroupItem, Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 
@@ -48,9 +49,9 @@ const Home = () => {
                 <ListGroupItem>$ {p.precio}</ListGroupItem>
               </ListGroup>
               <CardBody>
-                <CardLink href={p.id} className="btn-2">
-                  Ver Detalles
-                </CardLink>
+                <Link to='/Productos' className="btn-2">
+                  Ver Productos
+                </Link>
               </CardBody>
             </Card>
           ))}

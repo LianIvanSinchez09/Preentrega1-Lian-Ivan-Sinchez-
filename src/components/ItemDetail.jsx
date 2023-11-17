@@ -4,13 +4,11 @@ import { Card, CardImg, CardBody, CardTitle, CardText, Button, Row, Col } from '
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import ItemListContainer from './ItemListContainer';
-import AddAction from './AddAction';
+import Cart from './Cart';
 
 
 const ItemDetail = ({ producto, addToCarrito }) => {
     const { id } = useParams();
-    const [cantidad, setCantidad] = useState(0);
-
     const handleAddToCarrito = () => {
         addToCarrito(producto);
       };
