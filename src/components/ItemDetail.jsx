@@ -4,20 +4,16 @@ import { Card, CardImg, CardBody, CardTitle, CardText, Button, Row, Col } from '
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import ItemListContainer from './ItemListContainer';
+import AddAction from './AddAction';
 
-const ItemDetail = ({ producto }) => {
+
+const ItemDetail = ({ producto, addToCarrito }) => {
     const { id } = useParams();
     const [cantidad, setCantidad] = useState(0);
 
-    const sumar = () => {
-        setCantidad(cantidad + 1);
-    };
-
-    const restar = () => {
-        if (cantidad > 0) {
-            setCantidad(cantidad - 1);
-        }
-    };
+    const handleAddToCarrito = () => {
+        addToCarrito(producto);
+      };
 
     return (
         <main className='content-wrap margin-top centerflex'>
@@ -40,7 +36,7 @@ const ItemDetail = ({ producto }) => {
                     </div>
                     <Row>
                         <Col>
-                            <Button className='btn-2'>
+                            <Button onClick={handleAddToCarrito} className='btn-2'>
                                 Añadir al carrito
                             </Button>
                         </Col>

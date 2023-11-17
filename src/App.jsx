@@ -11,34 +11,21 @@ import Footer from './components/Footer'
 import Empleados from './pages/Empleados'
 import ItemListContainer from './components/ItemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer'
-import Cart from './components/Cart'
+import Cart from './components/AddAction'
 import ShoppingCartContext from './components/ShoppingCartContext'
-import './js/body'
-import Testing from './pages/Testing'
-
+import AddAction from './components/AddAction'
 
 const App = () => {
-//   const [loading, setLoading] = useState(false)
+  const [carrito, setCarrito] = useState([]);
 
-//   const changeState = () => {
-//     setLoading(true)
-//     setTimeout(()=>{
-//       setLoading(false)
-//     }, 5000);
-//   }
+  const addToCarrito = (item) => {
+    setCarrito([...carrito, item]);
+  };
 
-//   if(loading){
-//     return(
-//       <Loading/>
-//     )
-//   }
-//   else{
-//     return(
-//       <div>
-//         //pagina
-//       </div>
-//     )
-//   }
+  const removeFromCarrito = (itemId) => {
+    const updatedCarrito = carrito.filter((item) => item.id !== itemId);
+    setCarrito(updatedCarrito);
+  };
 
   return (
     <>
@@ -50,13 +37,9 @@ const App = () => {
             <Route exact path='/cart' element={<Cart/>}/>
             <Route exact path='/Productos/:id' element={<ItemDetailContainer/>}/>
             <Route exact path='/empleados' element={<Empleados/>}/>
-            <Route exact path='/Testing' element={<Testing/>}/>
+            <Route exact path='/Carrito' element={<Cart/>}/>
           </Routes>
         </BrowserRouter>
-        {/* <ShoppingCartContext>
-          <ComponenteA/>
-          <ComponenteB/>
-        </ShoppingCartContext> */}
       <Footer/>
     </>
   )

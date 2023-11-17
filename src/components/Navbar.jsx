@@ -1,7 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CartWidget from './CartWidget';
-import Styles from '../css/styles.css';
+import '../css/styles.css';
 import '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faListUl } from '@fortawesome/free-solid-svg-icons';
@@ -21,8 +21,8 @@ export const NavigationBar = () => {
                 <ul className='navbar-nav navbar-links'>
                     <Nav className="mr-auto">
                         <Link to='/Productos' className='mx-2 custom-links nav-item link-nav display-6'>Productos</Link>
-                        <Link to='/Testing' className='mx-2 custom-links nav-item link-nav display-6'>Testing</Link>
                         <Link to='/empleados' className='mx-2 custom-links nav-item link-nav display-6'>Empleados</Link>
+                        <Link to='/Carrito' className='mx-2 custom-links nav-item link-nav display-6'>Carrito</Link>
                         <Link>
                             <CartWidget/>
                         </Link>

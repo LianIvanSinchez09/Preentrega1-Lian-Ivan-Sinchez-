@@ -3,16 +3,21 @@ import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
 import { collection, getDocs, getFirestore } from 'firebase/firestore';
 import Loader from './Loader';
+import AddAction from './AddAction';
 
 const ItemDetailContainer = () => {
     const { id } = useParams(); // obtiene la ID de los parametros de la URL
-    
+    const [productos, setProductos] = useState([]);
+    const [carrito, setCarrito] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+
     useEffect(() =>{
         const dbProd = getFirestore()
         const prodCollection = collection(dbProd, 'productos')
         getDocs(prodCollection)
         .then((snapshot) => {
-          const docs = snapshot.docs.map((doc) => doc.data())
+          const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
           setProductos(docs)
         })
         .catch((error) => {
@@ -20,14 +25,18 @@ const ItemDetailContainer = () => {
         })
       }, [])
 
-      const [productos, setProductos] = useState([])
+      const addToCarrito = (item) => {
+        setCarrito([...carrito, item]);
+      };
       
-    // sirve para encontrar el producto segun el ID
-    const producto = productos.find((p) => 
-          p.id === id
-    );
+      const removeFromCarrito = (itemId) => {
+        const updatedCarrito = carrito.filter((item) => item.id !== itemId);
+        setCarrito(updatedCarrito);
+      };
 
-    const [loading, setLoading] = useState(true)
+
+    // sirve para encontrar el producto segun el ID
+    const producto = productos.find((p) => p.id === id);
       
     useEffect(() => {
       setLoading(true)
@@ -43,8 +52,9 @@ const ItemDetailContainer = () => {
               <Loader/>
               
               : 
-              
-              <ItemDetail producto={producto} /> 
+              <>
+              <ItemDetail producto={producto} addToCarrito={addToCarrito} /> 
+              </>
             }
         </main>
     );
