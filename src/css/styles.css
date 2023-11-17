@@ -364,13 +364,9 @@ nav {
   margin-top: 1rem;
   margin-bottom: 1rem;
   display: grid;
+  place-content: center;
   grid-template-columns: 6rem 6rem 6rem;
   gap: 10px;
-}
-.role-circle{
-  border: 2px solid white;
-  min-height: 0;
-  border-radius: 50px;
 }
 .card-title{
   border-bottom: rgb(185, 155, 155) 3px solid;

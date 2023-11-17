@@ -37,7 +37,7 @@ export const Empleados = () => {
         setLoading(true)
         setTimeout(() => {
             setLoading(false)
-        }, 3500)
+        }, 1500)
     }, [])
 
     return (
